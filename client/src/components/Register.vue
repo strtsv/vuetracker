@@ -13,7 +13,7 @@ import AuthenticationService from '@/services/AuthenticationService'
 export default {
   data () {
     return {
-      email: 'abc',
+      email: 'abc@abc.com',
       password: '123'
     }
   },

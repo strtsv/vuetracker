@@ -11,4 +11,7 @@ const sequelize = new Sequelize(
   config.db.options
 )
 
+db.sequelize = sequelize
+db.Sequelize = Sequelize
+
 module.exports = db
