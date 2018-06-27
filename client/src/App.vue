@@ -1,19 +1,13 @@
 <template>
   <div id="app">
-    <v-app>
-      <page-header />
-      <main>
-        <v-container fluid>
-          <router-view></router-view>
-        </v-container>
-      </main>
-    </v-app>
+    <img src="./assets/logo.png">
+    <router-view/>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'app'
+  name: 'App'
 }
 </script>
 
@@ -25,9 +19,5 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-}
-
-.danger-alert {
-  color: red;
 }
 </style>
