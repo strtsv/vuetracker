@@ -2,7 +2,6 @@
   <div id="app">
     <v-app>
       <main>
-        <img src="./assets/logo.png">
         <v-container fluid>
           <router-view></router-view>
         </v-container>
@@ -13,7 +12,7 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'app'
 }
 </script>
 

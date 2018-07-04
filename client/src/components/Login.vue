@@ -19,7 +19,7 @@
           dark
           class="cyan"
           @click="login">
-          Login
+          Войти
         </v-btn>
       </panel>
     </v-flex>
