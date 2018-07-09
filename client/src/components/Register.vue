@@ -1,7 +1,7 @@
 <template>
   <v-flex xs6 offset-xs3>
     <div class="white elevation-5">
-      <v-toolbar flat dense class="cyan" dark>
+      <v-toolbar flat dense class="cyan">
         <v-toolbar-title>Регистрация</v-toolbar-title>
       </v-toolbar>
       <div class="pl-4 pr-4 pt-3 pb-2">
@@ -24,7 +24,6 @@
         <div class="danger-alert" v-html="error" />
         <br>
         <v-btn
-          dark
           class="cyan"
           @click="register">
           Регистрация
