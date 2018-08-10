@@ -6,30 +6,6 @@
       <div class="danger-alert" v-if="error">
         {{error}}
       </div>
-
-      <v-toolbar-items>
-        <v-btn
-          dark
-          :to="{
-            name: 'register'
-          }">
-          Регистрация
-        </v-btn>
-        &nbsp;
-        <v-btn
-          dark
-          :to="{
-            name: 'login'
-          }">
-          Войти
-        </v-btn>
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <v-btn
-          dark
-          @click="logout">
-          Выйти
-        </v-btn>
-      </v-toolbar-items>
     </v-flex>
   </v-layout>
 </template>
