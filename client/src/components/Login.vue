@@ -1,25 +1,17 @@
 <template>
-  <v-flex xs6 offset-xs3>
-    <div class="white elevation-5">
-      <v-toolbar flat dense class="cyan" dark>
-        <v-toolbar-title>Авторизация</v-toolbar-title>
-      </v-toolbar>
-      <div class="pl-4 pr-4 pt-3 pb-2">
-        <form
-          name="tab-tracker-form"
-          autocomplete="off">
-          <v-text-field
-            label="Email"
-            v-model="email"
-          ></v-text-field>
-          <br>
-          <v-text-field
-            label="Password"
-            type="password"
-            v-model="password"
-            autocomplete="new-password"
-          ></v-text-field>
-        </form>
+  <v-layout column>
+    <v-flex xs6 offset-xs3>
+      <panel title="Логин">
+        <v-text-field
+          label="Email"
+          v-model="email"
+        ></v-text-field>
+        <br>
+        <v-text-field
+          label="Пароль"
+          type="password"
+          v-model="password"
+        ></v-text-field>
         <br>
         <div class="danger-alert" v-html="error" />
         <br>
@@ -27,21 +19,21 @@
           dark
           class="cyan"
           @click="login">
-          Войти
+          Login
         </v-btn>
-      </div>
-    </div>
-  </v-flex>
+      </panel>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
 import AuthenticationService from '@/services/AuthenticationService'
+
 export default {
-  name: 'Login',
   data () {
     return {
-      email: '',
-      password: '',
+      email: 'admin@admin.com',
+      password: '12345678',
       error: null
     }
   },
@@ -54,6 +46,9 @@ export default {
         })
         this.$store.dispatch('setToken', response.data.token)
         this.$store.dispatch('setUser', response.data.user)
+        this.$router.push({
+          name: 'songs'
+        })
       } catch (error) {
         this.error = error.response.data.error
       }

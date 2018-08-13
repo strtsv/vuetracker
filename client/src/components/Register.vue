@@ -1,25 +1,17 @@
 <template>
-  <v-flex xs6 offset-xs3>
-    <div class="white elevation-5">
-      <v-toolbar flat dense class="cyan">
-        <v-toolbar-title>Регистрация</v-toolbar-title>
-      </v-toolbar>
-      <div class="pl-4 pr-4 pt-3 pb-2">
-        <form
-          name="tab-tracker-form"
-          autocomplete="off">
-          <v-text-field
-            label="Email"
-            v-model="email"
-          ></v-text-field>
-          <br>
-          <v-text-field
-            label="Password"
-            type="password"
-            v-model="password"
-            autocomplete="new-password"
-          ></v-text-field>
-        </form>
+  <v-layout column>
+    <v-flex xs6 offset-xs3>
+      <panel title="Авторизация">
+        <v-text-field
+          label="Email"
+          v-model="email"
+        ></v-text-field>
+        <br>
+        <v-text-field
+          label="Пароль"
+          type="password"
+          v-model="password"
+        ></v-text-field>
         <br>
         <div class="danger-alert" v-html="error" />
         <br>
@@ -28,19 +20,19 @@
           @click="register">
           Регистрация
         </v-btn>
-      </div>
-    </div>
-  </v-flex>
+      </panel>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
 import AuthenticationService from '@/services/AuthenticationService'
 export default {
-  name: 'Register',
   data () {
     return {
-      email: 'abc@abc.com',
-      password: '123'
+      email: 'admin@admin.com',
+      password: '12345678',
+      error: null
     }
   },
   methods: {
@@ -51,6 +43,9 @@ export default {
       })
       this.$store.dispatch('setToken', response.data.token)
       this.$store.dispatch('setUser', response.data.user)
+      this.$router.push({
+        name: 'songs'
+      })
     }
   },
   watch: {
