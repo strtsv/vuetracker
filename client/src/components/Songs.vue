@@ -1,7 +1,20 @@
 <template>
   <v-layout>
     <v-flex xs6 v-if="isUserLoggedIn">
-      Привет
+      <v-btn
+        slot="action"
+        :to="{
+          name: 'songs-create'
+        }"
+        class="cyan accent-4"
+        light
+        medium
+        absolute
+        right
+        middle
+        fab>
+        <v-icon></v-icon>
+      </v-btn>
     </v-flex>
   </v-layout>
 </template>
@@ -28,6 +41,7 @@ export default {
 </script>
 
 <style scoped>
+
 .song {
   padding: 20px;
   height: 330px;
