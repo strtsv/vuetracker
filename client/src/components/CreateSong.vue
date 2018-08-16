@@ -1,37 +1,37 @@
 <template>
   <v-layout>
     <v-flex xs4>
-      <panel title="Song Metadata">
+      <panel title="Метаданные">
         <v-text-field
-          label="Title"
+          label="Заголовок"
           required
           :rules="[required]"
           v-model="song.title"
         ></v-text-field>
 
         <v-text-field
-          label="Artist"
+          label="Артист"
           required
           :rules="[required]"
           v-model="song.artist"
         ></v-text-field>
 
         <v-text-field
-          label="Genre"
+          label="Жанр"
           required
           :rules="[required]"
           v-model="song.genre"
         ></v-text-field>
 
         <v-text-field
-          label="Album"
+          label="Альбом"
           required
           :rules="[required]"
           v-model="song.album"
         ></v-text-field>
 
         <v-text-field
-          label="Album Image Url"
+          label="Картинка альбома"
           required
           :rules="[required]"
           v-model="song.albumImageUrl"
@@ -57,7 +57,7 @@
         ></v-text-field>
 
         <v-text-field
-          label="Lyrics"
+          label="Текст песни"
           multi-line
           required
           :rules="[required]"
@@ -73,7 +73,7 @@
         dark
         class="cyan"
         @click="create">
-        Create Song
+        Создать запись
       </v-btn>
     </v-flex>
   </v-layout>
@@ -96,7 +96,7 @@ export default {
         tab: null
       },
       error: null,
-      required: (value) => !!value || 'Required.'
+      required: (value) => !!value || 'Обязательно для заполнения.'
     }
   },
   methods: {
