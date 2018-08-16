@@ -38,12 +38,12 @@ export default new Router({
       component: CreateSong
     },
     {
-      path: 'songs/:SongId',
-      name: 'song-view',
+      path: '/songs/:songId',
+      name: 'song',
       component: ViewSong
     },
     {
-      path: 'songs/:SongId/edit',
+      path: '/songs/:songId/edit',
       name: 'song-edit',
       component: EditSong
     },

@@ -1,14 +1,80 @@
 <template>
   <v-layout>
-    <v-flex>
+    <v-flex xs4>
       <panel title="Метаданные">
         <v-text-field
-          label="Title"
+          label="Заголовок"
           required
           :rules="[required]"
           v-model="song.title"
         ></v-text-field>
+
+        <v-text-field
+          label="Артист"
+          required
+          :rules="[required]"
+          v-model="song.artist"
+        ></v-text-field>
+
+        <v-text-field
+          label="Жанр"
+          required
+          :rules="[required]"
+          v-model="song.genre"
+        ></v-text-field>
+
+        <v-text-field
+          label="Альбом"
+          required
+          :rules="[required]"
+          v-model="song.album"
+        ></v-text-field>
+
+        <v-text-field
+          label="Обложка"
+          required
+          :rules="[required]"
+          v-model="song.albumImageUrl"
+        ></v-text-field>
+
+        <v-text-field
+          label="YouTube ID"
+          required
+          :rules="[required]"
+          v-model="song.youtubeId"
+        ></v-text-field>
       </panel>
+    </v-flex>
+
+    <v-flex xs8>
+      <panel title="Структура" class="ml-2">
+        <v-text-field
+          label="Tab"
+          multi-line
+          required
+          :rules="[required]"
+          v-model="song.tab"
+        ></v-text-field>
+
+        <v-text-field
+          label="Текст"
+          multi-line
+          required
+          :rules="[required]"
+          v-model="song.lyrics"
+        ></v-text-field>
+      </panel>
+
+      <div class="danger-alert" v-if="error">
+        {{error}}
+      </div>
+
+      <v-btn
+        dark
+        class="cyan"
+        @click="save">
+        Сохранить
+      </v-btn>
     </v-flex>
   </v-layout>
 </template>
@@ -43,7 +109,7 @@ export default {
         this.error = 'Please fill in all the required'
         return
       }
-      const songId = this.$store.store.state.route.params.sondId
+      const songId = this.$store.state.route.params.sondId
       try {
         await SongsService.put(this.song)
         this.$router.push({
@@ -59,7 +125,8 @@ export default {
   },
   async mounted () {
     try {
-      const songId = this.$store.state.route.params.sondId
+      const songId = this.$store.state.route.params.songId
+      console.log(songId)
       this.song = (await SongsService.show(songId)).data
     } catch (err) {
       console.log(err)

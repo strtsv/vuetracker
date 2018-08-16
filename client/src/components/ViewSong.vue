@@ -1,11 +1,53 @@
 <template>
-  <div>
+  <panel title="Song Metadata">
     <v-layout>
       <v-flex xs6>
-        <tab :song="song" />
+        <div class="song-title">
+          {{song.title}}
+        </div>
+        <div class="song-artist">
+          {{song.artist}}
+        </div>
+        <div class="song-genre">
+          {{song.genre}}
+        </div>
+
+        <v-btn
+          dark
+          class="cyan"
+          :to="{
+            name: 'song-edit',
+            params () {
+              return {
+                songId: song.id
+              }
+            }
+          }">
+          Edit
+        </v-btn>
+
+        <v-btn
+          v-if="isUserLoggedIn"
+          dark
+          class="cyan">
+          Set As Bookmark
+        </v-btn>
+
+        <v-btn
+          v-if="isUserLoggedIn"
+          dark
+          class="cyan">
+          Unset As Bookmark
+        </v-btn>
+      </v-flex>
+
+      <v-flex xs6>
+        <img class="album-image" :src="song.albumImageUrl" />
+        <br>
+        {{song.album}}
       </v-flex>
     </v-layout>
-  </div>
+  </panel>
 </template>
 
 <script>

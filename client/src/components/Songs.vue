@@ -41,7 +41,7 @@
                 songId: song.id
               }
             }">
-            View
+            Просмотр
           </v-btn>
         </v-flex>
 
