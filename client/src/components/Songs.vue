@@ -1,5 +1,11 @@
 <template>
   <panel title="Songs">
+    <v-flex :class="{
+        xs12: !isUserLoggedIn,
+        xs6: isUserLoggedIn
+      }" class="ml-2">
+      <search-panel />
+    </v-flex>
     <v-btn
       slot="action"
       :to="{
@@ -55,9 +61,13 @@
 
 <script>
 import SongsService from '@/services/SongsService'
+import SearchPanel from './SearchPanel'
 import {mapState} from 'vuex'
 
 export default {
+  components: {
+    SearchPanel
+  },
   computed: {
     ...mapState([
       'isUserLoggedIn'
