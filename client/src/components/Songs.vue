@@ -1,11 +1,15 @@
 <template>
-  <panel title="Songs">
-    <v-flex :class="{
-        xs12: !isUserLoggedIn,
-        xs6: isUserLoggedIn
-      }" class="ml-2">
-      <search-panel />
-    </v-flex>
+  <panel title="Список треков">
+
+    <v-layout>
+      <v-flex :class="{
+          xs12: !isUserLoggedIn,
+          xs6: isUserLoggedIn
+        }" class="ml-2">
+        <search-panel />
+      </v-flex>
+    </v-layout>
+
     <v-btn
       slot="action"
       :to="{
@@ -18,7 +22,7 @@
       right
       middle
       fab>
-      <v-icon>add</v-icon>
+      <v-icon>+</v-icon>
     </v-btn>
 
     <div
@@ -78,8 +82,13 @@ export default {
       songs: null
     }
   },
-  async mounted () {
-    this.songs = (await SongsService.index()).data
+  watch: {
+    '$route.query.search': {
+      immediate: true,
+      async handler (value) {
+        this.songs = (await SongsService.index(value)).data
+      }
+    }
   }
 }
 </script>

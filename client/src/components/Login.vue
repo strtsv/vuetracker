@@ -1,7 +1,7 @@
 <template>
   <v-layout column>
     <v-flex xs6 offset-xs3>
-      <panel title="Логин">
+      <panel title="Авторизация">
         <v-text-field
           label="Email"
           v-model="email"

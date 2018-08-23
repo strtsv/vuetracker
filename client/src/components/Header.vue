@@ -7,20 +7,16 @@
         :to="{
           name: 'songs'
         }">
-        <v-toolbar-side-icon></v-toolbar-side-icon>
+        <v-btn
+          flat
+          dark
+          :to="{
+            name: 'songs'
+          }">
+          <v-toolbar-side-icon></v-toolbar-side-icon>
+        </v-btn>
       </router-link>
     </v-toolbar-title>
-
-    <v-toolbar-items>
-      <v-btn
-        flat
-        dark
-        :to="{
-          name: 'songs'
-        }">
-        Список
-      </v-btn>
-    </v-toolbar-items>
 
     <v-spacer></v-spacer>
 
