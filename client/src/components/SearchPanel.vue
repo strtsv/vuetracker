@@ -1,7 +1,7 @@
 <template>
-  <panel>
+  <panel title="Поиск">
     <v-text-field
-      label="Поиск по заголовку, альбому или названию исполнителя"
+      label="Заголовок, альбом или название исполнителя"
       v-model="search">
     </v-text-field>
   </panel>
