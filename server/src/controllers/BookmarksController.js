@@ -28,10 +28,9 @@ module.exports = {
         ))
       res.send(bookmarks)
     } catch (err) {
-				res.status(500).send({
-					error: 'an error has occured trying to fetch the bookmark'
-				})
-			}
+      res.status(500).send({
+        error: 'an error has occured trying to fetch the bookmark'
+      })
     }
-	}	
+  }
 }
