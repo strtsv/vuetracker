@@ -13,7 +13,7 @@ module.exports = (app) => {
     AuthenticationController.login)
 
   app.get('/bookmarks', isAuthenticated, BookmarksController.index)
-  app.post('/bookmarks', isAuthenticated, BookmarksController.post)
+//  app.post('/bookmarks', isAuthenticated, BookmarksController.post)
 
   app.get('/songs', SongsController.index)
   app.post('/songs', SongsController.post)
