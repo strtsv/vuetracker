@@ -22,7 +22,7 @@
       right
       middle
       fab>
-      <v-icon>+</v-icon>
+      <v-icon>add</v-icon>
     </v-btn>
 
     <div
