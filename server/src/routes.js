@@ -15,7 +15,11 @@ module.exports = (app) => {
 
   app.get("/bookmarks", isAuthenticated, BookmarksController.index);
   app.post("/bookmarks", isAuthenticated, BookmarksController.post);
-
+  app.delete(
+    "/bookmarks/:bookmarkId",
+    isAuthenticated,
+    BookmarksController.remove
+  );
   app.get("/songs", SongsController.index);
   app.post("/songs", SongsController.post);
   app.get("/songs/:songId", SongsController.show);

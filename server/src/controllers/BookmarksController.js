@@ -56,4 +56,28 @@ module.exports = {
       });
     }
   },
+  async remove(req, res) {
+    try {
+      const userId = req.user.id;
+      const { bookmarkId } = req.params;
+      const bookmark = await Bookmark.findOne({
+        where: {
+          id: bookmarkId,
+          UserId: userId,
+        },
+      });
+      if (!bookmark) {
+        return res.status(403).send({
+          error: "you do not have access to this bookmark",
+        });
+      }
+      await bookmark.destroy();
+      console.log("a bookmamrk was deleted");
+      res.send(bookmark);
+    } catch (err) {
+      res.status(500).send({
+        error: "an error has occured trying to delete the bookmark",
+      });
+    }
+  },
 };

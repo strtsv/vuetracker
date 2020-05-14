@@ -2,40 +2,41 @@
   <panel title="Поиск">
     <v-text-field
       label="Заголовок, альбом или название исполнителя"
-      v-model="search">
+      v-model="search"
+    >
     </v-text-field>
   </panel>
 </template>
 
 <script>
-import _ from 'lodash'
+import _ from "lodash";
+
 export default {
-  data () {
+  data() {
     return {
-      search: ''
+      search: ""
     }
   },
   watch: {
-    search: _.debounce(async function (value) {
+    search: _.debounce(async function () {
       const route = {
-        name: 'songs'
-      }
-      if (this.search !== '') {
+        name: "songs"
+      };
+      if (this.search !== "") {
         route.query = {
           search: this.search
-        }
+        };
       }
-      this.$router.push(route)
+      this.$router.push(route);
     }, 700),
-    '$route.query.search': {
+    "$route.query.search": {
       immediate: true,
       handler (value) {
-        this.search = value
+        this.search = value;
       }
     }
   }
-}
+};
 </script>
 
-<style>
-</style>
+<style></style>

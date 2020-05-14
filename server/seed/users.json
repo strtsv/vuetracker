@@ -1,6 +1,6 @@
 [
   {
-    "email": "abc@abc.com",
-    "password": "123"
+    "email": "admin@admin.com",
+    "password": "secret"
   }
 ]

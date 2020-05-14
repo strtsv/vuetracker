@@ -1,15 +1,5 @@
 <template>
   <panel title="Список треков">
-
-    <v-layout>
-      <v-flex :class="{
-          xs12: !isUserLoggedIn,
-          xs6: isUserLoggedIn
-        }" class="ml-2">
-        <search-panel />
-      </v-flex>
-    </v-layout>
-
     <v-btn
       slot="action"
       :to="{
@@ -21,25 +11,22 @@
       absolute
       right
       middle
-      fab>
+      fab
+    >
       <v-icon>add</v-icon>
     </v-btn>
 
-    <div
-      v-for="song in songs"
-      class="song"
-      :key="song.id">
-
+    <div v-for="song in songs" class="song" :key="song.id">
       <v-layout>
         <v-flex xs6>
           <div class="song-title">
-            {{song.title}}
+            {{ song.title }}
           </div>
           <div class="song-artist">
-            {{song.artist}}
+            {{ song.artist }}
           </div>
           <div class="song-genre">
-            {{song.genre}}
+            {{ song.genre }}
           </div>
 
           <v-btn
@@ -50,7 +37,8 @@
               params: {
                 songId: song.id
               }
-            }">
+            }"
+          >
             Просмотр
           </v-btn>
         </v-flex>
@@ -64,37 +52,26 @@
 </template>
 
 <script>
-import SongsService from '@/services/SongsService'
-import SearchPanel from './SearchPanel'
-import {mapState} from 'vuex'
+import SongsService from "@/services/SongsService";
 
 export default {
-  components: {
-    SearchPanel
-  },
-  computed: {
-    ...mapState([
-      'isUserLoggedIn'
-    ])
-  },
-  data () {
+  data() {
     return {
       songs: null
-    }
+    };
   },
   watch: {
-    '$route.query.search': {
+    "$route.query.search": {
       immediate: true,
-      async handler (value) {
-        this.songs = (await SongsService.index(value)).data
+      async handler(value) {
+        this.songs = (await SongsService.index(value)).data;
       }
     }
   }
-}
+};
 </script>
 
 <style scoped>
-
 .song {
   padding: 20px;
   height: 330px;

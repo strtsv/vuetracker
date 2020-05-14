@@ -2,22 +2,17 @@
   <v-layout column>
     <v-flex xs6 offset-xs3>
       <panel title="Регистрация">
-        <v-text-field
-          label="Email"
-          v-model="email"
-        ></v-text-field>
-        <br>
+        <v-text-field label="Email" v-model="email"></v-text-field>
+        <br />
         <v-text-field
           label="Пароль"
           type="password"
           v-model="password"
         ></v-text-field>
-        <br>
+        <br />
         <div class="danger-alert" v-html="error" />
-        <br>
-        <v-btn
-          class="cyan"
-          @click="register">
+        <br />
+        <v-btn class="cyan" @click="register">
           Регистрация
         </v-btn>
       </panel>
@@ -26,36 +21,33 @@
 </template>
 
 <script>
-import AuthenticationService from '@/services/AuthenticationService'
+import AuthenticationService from "@/services/AuthenticationService";
 export default {
-  data () {
+  data() {
     return {
-      email: 'admin@admin.com',
-      password: 'secret',
+      email: "admin@admin.com",
+      password: "secret",
       error: null
-    }
+    };
   },
   methods: {
-    async register () {
-      const response = await AuthenticationService.register({
-        email: this.email,
-        password: this.password
-      })
-      this.$store.dispatch('setToken', response.data.token)
-      this.$store.dispatch('setUser', response.data.user)
-      this.$router.push({
-        name: 'songs'
-      })
-    }
-  },
-  watch: {
-    email (value) {
-      console.log('Email was changed!', this.email.value)
+    async register() {
+      try {
+        const response = await AuthenticationService.register({
+          email: this.email,
+          password: this.password
+        });
+        this.$store.dispatch("setToken", response.data.token);
+        this.$store.dispatch("setUser", response.data.user);
+        this.$router.push({
+          name: "songs"
+        });
+      } catch (error) {
+        this.error = error.response.data.error;
+      }
     }
   }
-}
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
