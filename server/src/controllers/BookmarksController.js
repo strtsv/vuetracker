@@ -20,8 +20,8 @@ module.exports = {
           },
         ],
       })
-        .map((bookmark) => bookmark.toJSON())
-        .map((bookmark) => _.extend({}, bookmark.Song, bookmark));
+        .map(bookmark => bookmark.toJSON())
+        .map(bookmark => _.extend({}, bookmark.Song, bookmark));
       res.send(bookmarks);
     } catch (err) {
       res.status(500).send({

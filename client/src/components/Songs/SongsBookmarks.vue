@@ -1,6 +1,19 @@
 <template>
   <panel title="Закладки">
-    <v-data-table :headers="headers" :items="bookmarks"> </v-data-table>
+    <v-data-table
+      :headers="headers"
+      :pagination.sync="pagination"
+      :items="bookmarks"
+    >
+      <template slot="items" scope="props">
+        <td class="text-xs-right">
+          {{props.item.title}}
+        </td>
+        <td class="text-xs-right">
+          {{props.item.artist}}
+        </td>
+      </template>
+    </v-data-table>
   </panel>
 </template>
 
@@ -33,7 +46,7 @@ export default {
   },
   async mounted() {
     if (this.isUserLoggedIn) {
-      this.bookmakrs = await BookmarksService.index();
+      this.bookmakrs = (await BookmarksService.index()).data;
     }
   }
 };

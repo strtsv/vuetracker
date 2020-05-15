@@ -1,45 +1,13 @@
 <template>
-  <panel title="Song Metadata">
+  <panel title="Метаданные">
     <v-layout>
       <v-flex xs6>
-        <div class="song-title">
-          {{ song.title }}
-        </div>
-        <div class="song-artist">
-          {{ song.artist }}
-        </div>
-        <div class="song-genre">
-          {{ song.genre }}
-        </div>
-
-        <v-btn
-          dark
-          class="cyan"
-          :to="{
-            name: 'song-edit',
-            params() {
-              return {
-                songId: song.id
-              };
-            }
-          }"
-        >
-          Edit
-        </v-btn>
-
-        <v-btn v-if="isUserLoggedIn" dark @click="setAsBookmark" class="cyan">
-          Set As Bookmark
-        </v-btn>
-
-        <v-btn v-if="isUserLoggedIn" dark @click="unsetAsBookmark" class="cyan">
-          Unset As Bookmark
-        </v-btn>
+        <song-metadata :song="song" />
       </v-flex>
-
+    </v-layout>
+    <v-layout class="mt-2">
       <v-flex xs6>
-        <img class="album-image" :src="song.albumImageUrl" />
-        <br />
-        {{ song.album }}
+        <tab :song="song" />
       </v-flex>
     </v-layout>
   </panel>
@@ -48,6 +16,7 @@
 <script>
 import { mapState } from "vuex";
 import BookmarksService from "@/services/BookmarksService";
+import SongMetadata from "./SongMetadata";
 import SongsService from "@/services/SongsService";
 import Tab from "./Tab";
 
@@ -60,8 +29,13 @@ export default {
   computed: {
     ...mapState(["isUserLoggedIn", "user", "route"])
   },
+  async mounted () {
+    const songId = this.route.params.songId
+    this.song = (await SongsService.show(songId)).data
+  },
   components: {
-    Tab
+    Tab,
+    SongMetadata
   },
   methods: {
     async setAsBookmark() {
