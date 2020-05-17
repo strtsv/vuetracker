@@ -7,10 +7,10 @@ module.exports = {
       const userId = req.user.id;
       const { songId } = req.query;
       const where = {
-        userId: userId,
+        UserId: userId,
       };
       if (songId) {
-        where.songId = songId;
+        where.SongId = songId;
       }
       const bookmarks = await Bookmark.findAll({
         where: where,
