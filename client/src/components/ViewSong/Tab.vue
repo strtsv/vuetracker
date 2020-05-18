@@ -1,5 +1,5 @@
 <template>
-  <panel>
+  <panel title="Аккорды">
     <textarea
       readonly
       v-model="song.tab"

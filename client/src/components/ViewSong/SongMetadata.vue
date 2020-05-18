@@ -1,5 +1,5 @@
 <template>
-  <panel title="Закладки">
+  <panel title="Метаданные">
     <v-layout>
       <v-flex xs6>
         <div class="song-title">
@@ -31,7 +31,7 @@
           class="cyan"
           @click="setAsBookmark"
         >
-          Set As Bookmark
+          В закладки
         </v-btn>
 
         <v-btn
@@ -40,7 +40,7 @@
           class="cyan"
           @click="unsetAsBookmark"
         >
-          Unset As Bookmark
+          Удалить закладку
         </v-btn>
       </v-flex>
 

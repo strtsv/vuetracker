@@ -5,12 +5,12 @@
       :pagination.sync="pagination"
       :items="bookmarks"
     >
-      <template slot="items" scope="props">
+      <template slot="items" slot-scope="props">
         <td class="text-xs-right">
-          {{props.item.title}}
+          {{ props.item.title }}
         </td>
         <td class="text-xs-right">
-          {{props.item.artist}}
+          {{ props.item.artist }}
         </td>
       </template>
     </v-data-table>
@@ -38,7 +38,7 @@ export default {
         sortBy: "createdAt",
         descending: true
       },
-      bookmakrs: []
+      bookmarks: []
     };
   },
   computed: {
@@ -46,8 +46,10 @@ export default {
   },
   async mounted() {
     if (this.isUserLoggedIn) {
-      this.bookmakrs = (await BookmarksService.index()).data;
+      this.bookmarks = (await BookmarksService.index()).data;
     }
+    console.log(this.props);
+    // console.log(this.bookmarks[0].title);
   }
 };
 </script>
