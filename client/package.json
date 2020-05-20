@@ -19,6 +19,7 @@
     "sinon": "^6.3.4",
     "vue": "^2.5.17",
     "vue-router": "^3.0.1",
+    "vue-youtube-embed": "^2.2.2",
     "vuetify": "^1.2.5",
     "vuex": "^3.0.1",
     "vuex-persistedstate": "^3.0.1",
