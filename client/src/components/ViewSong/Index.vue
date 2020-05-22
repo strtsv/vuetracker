@@ -12,6 +12,9 @@
       <v-flex xs6>
         <tab :song="song" />
       </v-flex>
+      <v-flex xs6 class="ml-2">
+        <lyrics :song="song" />
+      </v-flex>
     </v-layout>
   </div>
 </template>
@@ -19,6 +22,7 @@
 <script>
 import { mapState } from "vuex";
 import SongMetadata from "./SongMetadata";
+import Lyrics from "./Lyrics";
 import YouTube from "./YouTube";
 import SongsService from "@/services/SongsService";
 import Tab from "./Tab";
@@ -38,6 +42,7 @@ export default {
   },
   components: {
     Tab,
+    Lyrics,
     YouTube,
     SongMetadata
   }
