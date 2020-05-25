@@ -20,6 +20,12 @@ module.exports = (app) => {
     isAuthenticated,
     BookmarksController.remove
   );
+  app.get('/histories',
+    isAuthenticated,
+    HistoriesController.index);
+  app.post('/histories',
+    isAuthenticated,
+    HistoriesController.post);
   app.get("/songs", SongsController.index);
   app.post("/songs", SongsController.post);
   app.get("/songs/:songId", SongsController.show);
